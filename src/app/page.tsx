@@ -2,6 +2,7 @@
 
 import {leaderboard} from "@/utils/LeaderboardWins";
 import LeaderboardTable from "@/component/LeaderboardTable";
+import Timeline from "@/component/Timeline";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <br/>
       <LeaderboardTable/>
       <br/>
+        <Timeline/>
     </main>
   )
 }
