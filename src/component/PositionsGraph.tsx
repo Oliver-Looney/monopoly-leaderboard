@@ -44,7 +44,7 @@ const PositionsGraph: React.FC<Props> = ({ leaderboard }) => {
     return (
         <div>
             <div style={{ width: '100%', overflowX: 'auto', overflowY: 'hidden' }}>
-                <LineChart width={1000} height={300} data={chartData}>
+                <LineChart width={2000} height={300} data={chartData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="game" label={{ value: 'Game Number', position: 'insideBottom', offset: -5 }} />
                     <YAxis
