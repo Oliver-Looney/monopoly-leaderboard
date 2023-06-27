@@ -3,14 +3,24 @@
 import {leaderboard} from "@/utils/LeaderboardWins";
 import LeaderboardTable from "@/component/LeaderboardTable";
 import Timeline from "@/component/Timeline";
+import TotalWinsGraph from "@/component/TotalWinsGraph";
+import PositionsGraph from "@/component/PositionsGraph";
 
 export default function Home() {
   return (
     <main className="container">
       <h1>{leaderboard.name}</h1>
+        <h3>Test data:</h3>
       <br/>
       <LeaderboardTable/>
-      <br/>
+
+        <TotalWinsGraph leaderboard={leaderboard}/>
+
+        <br/>
+        <PositionsGraph leaderboard={leaderboard}/>
+
+
+        <br/>
         <Timeline/>
     </main>
   )

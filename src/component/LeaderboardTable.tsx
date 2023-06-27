@@ -15,7 +15,18 @@ export default function LeaderboardTable() {
             acc[name] = (acc[name] || 0) + 1;
             return acc;
         }, {});
-        setWinCounts(counts);
+
+        // Sort players based on total wins
+        const sortedCounts = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
+        // Create a new object with sorted counts
+        const sortedWinCounts: WinCounts = sortedCounts.reduce((acc, [name, count]) => {
+            // @ts-ignore
+            acc[name] = count;
+            return acc;
+        }, {});
+
+        setWinCounts(sortedWinCounts);
     }, []);
 
     return (
