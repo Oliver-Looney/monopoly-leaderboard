@@ -14,11 +14,14 @@ export default function Home() {
       <br/>
       <LeaderboardTable/>
 
-        <TotalWinsGraph leaderboard={leaderboard}/>
+        <div className="card">
+            <TotalWinsGraph leaderboard={leaderboard}/>
+        </div>
 
         <br/>
-        <PositionsGraph leaderboard={leaderboard}/>
-
+        <div className="card">
+            <PositionsGraph leaderboard={leaderboard}/>
+        </div>
 
         <br/>
         <Timeline/>

@@ -41,6 +41,7 @@ const TotalWinsGraph: React.FC<Props> = ({ leaderboard }) => {
 
     return (
         <div>
+            <h2>Total Wins</h2>
             <div style={{ width: '100%', overflowX: 'auto', overflowY: 'hidden' }}>
                 <LineChart width={2000} height={300} data={chartData}>
                     <CartesianGrid strokeDasharray="3 3" />
