@@ -3,10 +3,10 @@ import { Chrono } from 'react-chrono';
 import { leaderboard } from '@/utils/LeaderboardWins';
 
 const Timeline = () => {
-    const timelineItems = leaderboard.wins.map((win) => ({
+    const timelineItems = leaderboard.wins.reverse().map((win) => ({
         title: win.name,
         cardTitle: win.name,
-        cardSubtitle: win.date.toDateString(),
+        cardSubtitle: win.date?.toDateString() || "Date not recorded",
         media: {
             type: 'IMAGE',
             source: {

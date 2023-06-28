@@ -6,7 +6,7 @@ interface Leaderboard {
 
 interface Win {
     name: string;
-    date: Date;
+    date: Date | null;
     game: number;
 }
 
