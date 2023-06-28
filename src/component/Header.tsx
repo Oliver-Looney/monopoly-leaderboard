@@ -5,7 +5,7 @@ export default function Header(){
         <header>
             <div className="container">
                 <div className="title-and-links">
-                    <Link href='/'> <h1>Monopoly Leaderboard</h1> </Link>
+                    <Link href='https://monopoly.oliverlooney.com/'> <h1>Monopoly Leaderboard</h1> </Link>
                     <MyLinks/>
                 </div>
             </div>
