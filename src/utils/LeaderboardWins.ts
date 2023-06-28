@@ -145,8 +145,9 @@ export const leaderboard: Leaderboard = {
         {name: "Thomas", date: new Date("27 June 2023"), game: 95},
 
 
-        {name: "Thomas", date: new Date("28 June 2023"), game: 96},
+        {name: "Thomas", date: new Date("27 June 2023"), game: 96},
 
+{name: "Oliver", date: new Date("28 June 2023"), game: 97},
 
     ]
 }
