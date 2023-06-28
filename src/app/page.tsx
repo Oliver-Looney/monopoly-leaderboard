@@ -6,21 +6,24 @@ import Timeline from "@/component/Timeline";
 import TotalWinsGraph from "@/component/TotalWinsGraph";
 import PositionsGraph from "@/component/PositionsGraph";
 import Stats from "@/component/Stats";
+import Header from "@/component/Header";
 
 export default function Home() {
   return (
-    <main className="container">
-        <br/>
-        <h1>{leaderboard.name}</h1>
-        <br/>
-        <LeaderboardTable/>
-        <br/>
-        <TotalWinsGraph leaderboard={leaderboard}/>
-        <br/>
-        <PositionsGraph leaderboard={leaderboard}/>
-        <br/>
-        <Stats/>
-        <Timeline/>
-    </main>
+      <main>
+          <Header/>
+          <div className="container">
+              <h1>{leaderboard.name}</h1>
+              <br/>
+              <LeaderboardTable/>
+              <br/>
+              <TotalWinsGraph leaderboard={leaderboard}/>
+              <br/>
+              <PositionsGraph leaderboard={leaderboard}/>
+              <br/>
+              <Stats/>
+              <Timeline/>
+          </div>
+      </main>
   )
 }

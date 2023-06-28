@@ -12,7 +12,7 @@ body {
 }
 
 p {
-  margin: 15px 0;
+  margin: 3px 0;
   line-height: 1.8;
 }
 
@@ -191,5 +191,12 @@ select {
   .stat-card > div {
     flex-basis: calc(33.33% - 10px); /* Each div takes up one-third of the width with 10px spacing between them */
     margin-right: 10px; /* Spacing between the divs */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Apply the following styles when the screen width is 768px or less */
+  .social-links {
+    font-size: 10px;
   }
 }

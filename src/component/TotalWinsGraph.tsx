@@ -48,14 +48,13 @@ const TotalWinsGraph: React.FC<Props> = ({ leaderboard }) => {
                     <XAxis dataKey="game" label={{ value: 'Game Number', position: 'insideBottom', offset: -5 }} />
                     <YAxis
                         label={{ value: 'Total Wins', angle: -90, position: 'insideLeft' }}
-                        tickCount={Math.max(5, Math.ceil(chartData.length / 10))}
                     />
                     <Tooltip />
                     <Legend />
                     {Object.keys(playerColors).map((player) => (
                         <Line
                             key={player}
-                            type="stepAfter"
+                            type="linear"
                             dataKey={player}
                             stroke={playerColors[player]}
                             name={player}
