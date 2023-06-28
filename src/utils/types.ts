@@ -1,5 +1,6 @@
 interface Leaderboard {
     name: string;
+    members: string[]
     wins: Win[];
 }
 

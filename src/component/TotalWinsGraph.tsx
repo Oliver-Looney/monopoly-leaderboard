@@ -40,7 +40,7 @@ const TotalWinsGraph: React.FC<Props> = ({ leaderboard }) => {
     }, [leaderboard]);
 
     return (
-        <div>
+        <div className="card">
             <h2>Total Wins</h2>
             <div style={{ width: '100%', overflowX: 'auto', overflowY: 'hidden' }}>
                 <LineChart width={2000} height={300} data={chartData}>

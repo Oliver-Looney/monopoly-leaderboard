@@ -45,7 +45,7 @@ const PositionsGraph: React.FC<Props> = ({ leaderboard }) => {
     }
 
     return (
-        <div>
+        <div className="card">
             <h2>Positions</h2>
             <div style={{ width: '100%', overflowX: 'auto', overflowY: 'hidden' }}>
                 <LineChart width={2000} height={300} data={chartData}>
@@ -54,7 +54,6 @@ const PositionsGraph: React.FC<Props> = ({ leaderboard }) => {
                     <YAxis
                         label={{ value: 'Position', angle: -90, position: 'insideLeft' }}
                         reversed
-                        allowDecimals={false}
                     />
                     <Tooltip />
                     <Legend />

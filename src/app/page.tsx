@@ -5,6 +5,7 @@ import LeaderboardTable from "@/component/LeaderboardTable";
 import Timeline from "@/component/Timeline";
 import TotalWinsGraph from "@/component/TotalWinsGraph";
 import PositionsGraph from "@/component/PositionsGraph";
+import Stats from "@/component/Stats";
 
 export default function Home() {
   return (
@@ -14,16 +15,13 @@ export default function Home() {
       <br/>
       <LeaderboardTable/>
 
-        <div className="card">
-            <TotalWinsGraph leaderboard={leaderboard}/>
-        </div>
+        <TotalWinsGraph leaderboard={leaderboard}/>
 
         <br/>
-        <div className="card">
-            <PositionsGraph leaderboard={leaderboard}/>
-        </div>
+        <PositionsGraph leaderboard={leaderboard}/>
 
         <br/>
+        <Stats/>
         <Timeline/>
     </main>
   )
