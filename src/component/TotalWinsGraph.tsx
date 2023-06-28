@@ -49,7 +49,6 @@ const TotalWinsGraph: React.FC<Props> = ({ leaderboard }) => {
                     <YAxis
                         label={{ value: 'Total Wins', angle: -90, position: 'insideLeft' }}
                         tickCount={Math.max(5, Math.ceil(chartData.length / 10))}
-                        allowDecimals={false}
                     />
                     <Tooltip />
                     <Legend />

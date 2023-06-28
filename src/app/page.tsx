@@ -10,9 +10,11 @@ import Stats from "@/component/Stats";
 export default function Home() {
   return (
     <main className="container">
-      <h1>{leaderboard.name}</h1>
-      <br/>
-      <LeaderboardTable/>
+        <br/>
+        <h1>{leaderboard.name}</h1>
+        <br/>
+        <LeaderboardTable/>
+        <br/>
         <TotalWinsGraph leaderboard={leaderboard}/>
         <br/>
         <PositionsGraph leaderboard={leaderboard}/>
