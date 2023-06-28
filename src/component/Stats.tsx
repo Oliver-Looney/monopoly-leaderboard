@@ -2,83 +2,67 @@ import React from 'react';
 import { leaderboard } from '@/utils/LeaderboardWins';
 
 const calculateCurrentWinStreak = (playerName: string): number => {
-    const wins = leaderboard.wins.filter((win) => win.name === playerName);
     let currentStreak = 0;
-
-    for (let i = wins.length - 1; i >= 0; i--) {
-        if (wins[i].game === wins[i + 1]?.game - 1) {
+    for (let i = leaderboard.wins.length - 1; i >= 0; i--) {
+        if (leaderboard.wins[i].name === playerName) {
             currentStreak++;
         } else {
             break;
         }
     }
-
     return currentStreak;
 };
 
-
 const calculateCurrentLostStreak = (playerName: string): number => {
-    const losses = leaderboard.wins.filter((win) => win.name !== playerName);
     let currentStreak = 0;
-
-    for (let i = losses.length - 1; i >= 0; i--) {
-        if (losses[i].game === losses[i - 1]?.game + 1) {
+    for (let i = leaderboard.wins.length - 1; i >= 0; i--) {
+        if (leaderboard.wins[i].name !== playerName) {
             currentStreak++;
         } else {
             break;
         }
     }
-
     return currentStreak;
 };
 
 const calculateBiggestWinStreak = (playerName: string): number => {
-    const wins = leaderboard.wins.filter((win) => win.name === playerName);
     let currentStreak = 0;
     let biggestStreak = 0;
-
-    for (let i = 0; i < wins.length; i++) {
-        if (wins[i].game === wins[i - 1]?.game + 1) {
+    for (let i = leaderboard.wins.length - 1; i >= 0; i--) {
+        if (leaderboard.wins[i].name === playerName) {
             currentStreak++;
         } else {
-            currentStreak = 1;
-        }
-
-        if (currentStreak > biggestStreak) {
-            biggestStreak = currentStreak;
+            if (currentStreak > biggestStreak) {
+                biggestStreak = currentStreak;
+            }
+            currentStreak = 0;
         }
     }
-
     return biggestStreak;
 };
 
 const calculateBiggestLostStreak = (playerName: string): number => {
-    const losses = leaderboard.wins.filter((win) => win.name !== playerName);
     let currentStreak = 0;
     let biggestStreak = 0;
-
-    for (let i = 0; i < losses.length; i++) {
-        if (losses[i].game === losses[i - 1]?.game + 1) {
+    for (let i = leaderboard.wins.length - 1; i >= 0; i--) {
+        if (leaderboard.wins[i].name !== playerName) {
             currentStreak++;
         } else {
-            currentStreak = 1;
-        }
-
-        if (currentStreak > biggestStreak) {
-            biggestStreak = currentStreak;
+            if (currentStreak > biggestStreak) {
+                biggestStreak = currentStreak;
+            }
+            currentStreak = 0;
         }
     }
-
     return biggestStreak;
 };
 
-const calculateWinRate = (playerName: string): string => {
+const calculateWinRate = (playerName: string): number => {
     const wins = leaderboard.wins.filter((win) => win.name === playerName);
     const totalGames = leaderboard.wins[leaderboard.wins.length - 1].game;
     const winCount = wins.length;
 
-    const winRate = (winCount / totalGames) * 100;
-    return winRate.toFixed(2) + '%';
+    return (winCount / totalGames) * 100;
 };
 
 export default function Stats() {
@@ -86,50 +70,87 @@ export default function Stats() {
         <div className="card">
             <h2>Statistics</h2>
 
-            <div>
-                <h3>Current Win Streak</h3>
-                {leaderboard.members.map((member, index) => (
-                    <p key={index}>
-                        <div>{member}: {calculateCurrentWinStreak(member)}</div>
-                    </p>
-                ))}
+            <div className="stat-card">
+                <div>
+                    <h3>Current Win Streak</h3>
+                    {leaderboard.members
+                        .map((member) => ({
+                            name: member,
+                            currentWinStreak: calculateCurrentWinStreak(member)
+                        }))
+                        .sort((a, b) => b.currentWinStreak - a.currentWinStreak) // Sort by currentWinStreak in descending order
+                        .map((data, index) => (
+                            <p key={index}>
+                                <div>{data.name}: {data.currentWinStreak}</div>
+                            </p>
+                        ))}
+                </div>
+
+                <div>
+                    <h3>Games Since Last Win</h3>
+                    {leaderboard.members
+                        .map((member) => ({
+                            name: member,
+                            gamesSinceLastWin: calculateCurrentLostStreak(member)
+                        }))
+                        .sort((a, b) => a.gamesSinceLastWin - b.gamesSinceLastWin) // Sort by gamesSinceLastWin in ascending order
+                        .map((data, index) => (
+                            <p key={index}>
+                                <div>{data.name}: {data.gamesSinceLastWin}</div>
+                            </p>
+                        ))}
+                </div>
             </div>
 
-            <div>
-                <h3>Current Loss Streak</h3>
-                {leaderboard.members.map((member, index) => (
-                    <p key={index}>
-                        <div>{member}: {calculateCurrentLostStreak(member)}</div>
-                    </p>
-                ))}
+            <div className="stat-card">
+                <div>
+                    <h3>Biggest Win Streak</h3>
+                    {leaderboard.members
+                        .map((member) => ({
+                            name: member,
+                            biggestWinStreak: calculateBiggestWinStreak(member)
+                        }))
+                        .sort((a, b) => b.biggestWinStreak - a.biggestWinStreak) // Sort by biggestWinStreak in descending order
+                        .map((data, index) => (
+                            <p key={index}>
+                                <div>{data.name}: {data.biggestWinStreak}</div>
+                            </p>
+                        ))}
+                </div>
+
+                <div>
+                    <h3>Biggest Loss Streak</h3>
+                    {leaderboard.members
+                        .map((member) => ({
+                            name: member,
+                            biggestLostStreak: calculateBiggestLostStreak(member)
+                        }))
+                        .sort((a, b) => b.biggestLostStreak - a.biggestLostStreak) // Sort by biggestLostStreak in descending order
+                        .map((data, index) => (
+                            <p key={index}>
+                                <div>{data.name}: {data.biggestLostStreak}</div>
+                            </p>
+                        ))}
+                </div>
             </div>
 
-            <div>
-                <h3>Biggest Win Streak</h3>
-                {leaderboard.members.map((member, index) => (
-                    <p key={index}>
-                        <div>{member}: {calculateBiggestWinStreak(member)}</div>
-                    </p>
-                ))}
+            <div className="stat-card">
+                <div>
+                    <h3>Win Rate</h3>
+                    {leaderboard.members
+                        .map((member) => ({
+                            name: member,
+                            winRate: calculateWinRate(member)
+                        }))
+                        .sort((a, b) => b.winRate - a.winRate) // Sort by winRate in descending order
+                        .map((data, index) => (
+                            <p key={index}>
+                                <div>{data.name}: {data.winRate.toFixed(2) + '%'}</div>
+                            </p>
+                        ))}
+                </div>
             </div>
 
-            <div>
-                <h3>Biggest Loss Streak</h3>
-                {leaderboard.members.map((member, index) => (
-                    <p key={index}>
-                        <div>{member}: {calculateBiggestLostStreak(member)}</div>
-                    </p>
-                ))}
-            </div>
-
-            <div>
-                <h3>Win Rate</h3>
-                {leaderboard.members.map((member, index) => (
-                    <p key={index}>
-                        <div>{member}: {calculateWinRate(member)}</div>
-                    </p>
-                ))}
-            </div>
         </div>
     );
 }

@@ -173,3 +173,22 @@ select {
   height: 100px; /* Set the height of the images */
   object-fit: cover; /* Ensure the images maintain their aspect ratio */
 }
+
+.stat-card {
+  display: flex;
+  flex-wrap: wrap; /* Wrap the divs to a new line if there is not enough room */
+  justify-content: center; /* Center the divs horizontally */
+  align-items: center; /* Center the divs vertically */
+}
+
+.stat-card > div {
+  flex-basis: 100%; /* Each div takes up the full width initially */
+}
+
+@media (min-width: 768px) {
+  /* Apply the following styles when the screen width is 768px or larger */
+  .stat-card > div {
+    flex-basis: calc(33.33% - 10px); /* Each div takes up one-third of the width with 10px spacing between them */
+    margin-right: 10px; /* Spacing between the divs */
+  }
+}

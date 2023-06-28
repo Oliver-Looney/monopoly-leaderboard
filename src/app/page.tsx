@@ -11,15 +11,11 @@ export default function Home() {
   return (
     <main className="container">
       <h1>{leaderboard.name}</h1>
-        <h3>Test data:</h3>
       <br/>
       <LeaderboardTable/>
-
         <TotalWinsGraph leaderboard={leaderboard}/>
-
         <br/>
         <PositionsGraph leaderboard={leaderboard}/>
-
         <br/>
         <Stats/>
         <Timeline/>
