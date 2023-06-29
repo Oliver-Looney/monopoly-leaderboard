@@ -68,7 +68,7 @@ const calculateWinRate = (playerName: string): number => {
     return (winCount / totalGames) * 100;
 };
 
-const calculateAverageLossesBetweenWins = (playerName: string): number => {
+const calculateAverageLossesStreak = (playerName: string): number => {
     let currentStreak = 0;
     let losses: number[] = [];
     for (let i = leaderboard.wins.length - 1; i >= 0; i--) {
@@ -189,7 +189,7 @@ export default function Stats() {
                     {leaderboard.members
                         .map((member) => ({
                             name: member,
-                            winRate: calculateAverageLossesBetweenWins(member)
+                            winRate: calculateAverageLossesStreak(member)
                         }))
                         .sort((a, b) => a.winRate - b.winRate) // Sort by winRate in descending order
                         .map((data, index) => (
