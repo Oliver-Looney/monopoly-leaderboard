@@ -150,6 +150,7 @@ export const leaderboard: Leaderboard = {
         {name: "Oliver", date: new Date("28 June 2023"), game: 97},
 
 
+{name: "Daniel", date: new Date("29 June 2023"), game: 98},
 
     ]
 }
