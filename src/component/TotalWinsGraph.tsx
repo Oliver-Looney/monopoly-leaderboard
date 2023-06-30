@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import {GameData, Leaderboard} from '@/utils/types';
+import {GameData} from '@/utils/types';
 import {playerColors} from "@/utils/constants";
+import {leaderboard} from "@/utils/LeaderboardWins";
 
-type Props = {
-    leaderboard: Leaderboard;
-};
-
-const TotalWinsGraph: React.FC<Props> = ({ leaderboard }) => {
+const TotalWinsGraph: React.FC = () => {
     const [chartData , setChartData] = useState<GameData[]>([]);
 
     useEffect(() => {
@@ -37,7 +34,7 @@ const TotalWinsGraph: React.FC<Props> = ({ leaderboard }) => {
         });
 
         setChartData(transformedData);
-    }, [leaderboard]);
+    }, []);
 
     return (
         <div className="card">

@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import { GameData, Leaderboard } from '@/utils/types';
+import { GameData } from '@/utils/types';
 import { playerColors } from '@/utils/constants';
+import {leaderboard} from "@/utils/LeaderboardWins";
 
-type Props = {
-    leaderboard: Leaderboard;
-};
-
-const PositionsGraph: React.FC<Props> = ({ leaderboard }) => {
+const PositionsGraph: React.FC = () => {
     const [chartData, setChartData] = useState<GameData[]>([]);
 
     useEffect(() => {
@@ -38,7 +35,7 @@ const PositionsGraph: React.FC<Props> = ({ leaderboard }) => {
         });
 
         setChartData(transformedData);
-    }, [leaderboard]);
+    }, []);
 
     if (chartData.length === 0) {
         return <div>Loading...</div>; // Add a loading state while waiting for the data
@@ -51,10 +48,7 @@ const PositionsGraph: React.FC<Props> = ({ leaderboard }) => {
                 <LineChart width={2000} height={300} data={chartData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="game" label={{ value: 'Game Number', position: 'insideBottom', offset: -5 }} />
-                    <YAxis
-                        label={{ value: 'Position', angle: -90, position: 'insideLeft' }}
-                        reversed
-                    />
+                    <YAxis label={{ value: 'Position', angle: -90, position: 'insideLeft' }} reversed={true}/>
                     <Tooltip />
                     <Legend />
                     {Object.keys(chartData[0]).map((player) =>

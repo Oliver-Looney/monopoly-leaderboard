@@ -16,9 +16,9 @@ export default function Home() {
               <br/>
               <LeaderboardTable/>
               <br/>
-              <TotalWinsGraph leaderboard={leaderboard}/>
+              <TotalWinsGraph/>
               <br/>
-              <PositionsGraph leaderboard={leaderboard}/>
+              <PositionsGraph/>
               <br/>
               <Stats/>
               <br/>
