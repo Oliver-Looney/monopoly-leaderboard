@@ -2,7 +2,6 @@
 
 import {leaderboard} from "@/utils/LeaderboardWins";
 import LeaderboardTable from "@/component/LeaderboardTable";
-import Timeline from "@/component/Timeline";
 import TotalWinsGraph from "@/component/TotalWinsGraph";
 import PositionsGraph from "@/component/PositionsGraph";
 import Stats from "@/component/Stats";
@@ -22,7 +21,8 @@ export default function Home() {
               <PositionsGraph leaderboard={leaderboard}/>
               <br/>
               <Stats/>
-              <Timeline/>
+              <br/>
+              <br/>
           </div>
       </main>
   )

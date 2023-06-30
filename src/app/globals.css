@@ -186,6 +186,10 @@ select {
   flex-basis: 100%; /* Each div takes up the full width initially */
 }
 
+.stat-card > div > h3 {
+  padding-top: 20px;
+}
+
 @media (min-width: 768px) {
   /* Apply the following styles when the screen width is 768px or larger */
   .stat-card > div {
