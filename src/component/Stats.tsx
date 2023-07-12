@@ -68,26 +68,6 @@ const calculateWinRate = (playerName: string): number => {
     return (winCount / totalGames) * 100;
 };
 
-const calculateAverageLossesStreak = (playerName: string): number => {
-    let currentStreak = 0;
-    let losses: number[] = [];
-    for (let i = leaderboard.wins.length - 1; i >= 0; i--) {
-        if (leaderboard.wins[i].name !== playerName) {
-            currentStreak++;
-        } else {
-            if (currentStreak > 0) {
-                losses.push(currentStreak)
-                currentStreak = 0;
-            }
-        }
-    }
-    let totalLossesStreak = 0;
-    for (let i = 0; i < losses.length; i++) {
-        totalLossesStreak += losses[i];
-    }
-    return totalLossesStreak / losses.length;
-};
-
 export default function Stats() {
     return (
         <div className="card">
@@ -181,20 +161,6 @@ export default function Stats() {
                         .map((data, index) => (
                             <p key={index}>
                                 <div>{data.name}: {data.winRate.toFixed(2) + '%'}</div>
-                            </p>
-                        ))}
-                </div>
-                <div>
-                    <h3>Average Losses Streak</h3>
-                    {leaderboard.members
-                        .map((member) => ({
-                            name: member,
-                            winRate: calculateAverageLossesStreak(member)
-                        }))
-                        .sort((a, b) => a.winRate - b.winRate) // Sort by winRate in descending order
-                        .map((data, index) => (
-                            <p key={index}>
-                                <div>{data.name}: {data.winRate.toFixed(2)} losses in-between wins</div>
                             </p>
                         ))}
                 </div>
