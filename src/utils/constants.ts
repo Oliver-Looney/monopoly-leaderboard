@@ -3,6 +3,7 @@ const playerColors: { [key: string]: string } = {
     Declan: 'red',
     Thomas: 'green',
     Daniel: 'black',
+    Jonny: 'purple',
 };
 
 export {
