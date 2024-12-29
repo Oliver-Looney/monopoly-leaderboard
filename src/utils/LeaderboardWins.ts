@@ -2,7 +2,7 @@ import {Leaderboard} from "@/utils/types";
 
 export const leaderboard: Leaderboard = {
     name: "Monopoly Leaderboard",
-    members: ["Thomas", "Oliver", "Daniel", "Declan"],
+    members: ["Thomas", "Oliver", "Daniel", "Declan", "Jonny"],
     wins: [
         {name: "Oliver", date: null, game: 1},
         {name: "Declan", date: null, game: 2},
